@@ -51,11 +51,5 @@ jobs:
         with:
           name: docusaurus-build
 
-      - name: Move build files to correct directory
-        run: ls -la
-
-      - name: Verify downloaded artifact
-        run: ls -la ./build
-
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
