@@ -32,34 +32,9 @@ jobs:
       - name: Verify build output
         run: ls -la ./build
 
-      - name: Check for symbolic or hard links
-        run: find build -type l 
-
-      - name: Check build size
-        run: du -sh ./build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: docusaurus-build
-          path: build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: docusaurus-build
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./build
           
