@@ -20,8 +20,8 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Yarn
-        run: corepack enable && corepack prepare yarn@stable --activate
+      - name: Install Yarn (Version 3)
+        run: corepack prepare yarn@3.x --activate
 
       - name: Install dependencies
         run: yarn install
