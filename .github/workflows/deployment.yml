@@ -58,7 +58,8 @@ jobs:
           name: docusaurus-build
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          artifact_name: docusaurus-build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
           
