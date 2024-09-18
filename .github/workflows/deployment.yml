@@ -47,6 +47,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: docusaurus-build
+          path: build
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
