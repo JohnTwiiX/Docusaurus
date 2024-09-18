@@ -32,6 +32,12 @@ jobs:
       - name: Verify build output
         run: ls -la ./build
 
+      - name: Check for symbolic or hard links
+        run: find build -type l 
+
+      - name: Check build size
+        run: du -sh ./build
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
