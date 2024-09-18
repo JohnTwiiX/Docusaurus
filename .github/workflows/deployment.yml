@@ -20,14 +20,17 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Yarn (Version 3)
-        run: corepack prepare yarn@3.x --activate
+      - name: Install Yarn
+        run: corepack enable && corepack prepare yarn@stable --activate
 
       - name: Install dependencies
         run: yarn install
 
       - name: Build the Docusaurus site
         run: yarn build
+
+      - name: Verify build output
+        run: ls -la ./build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
@@ -47,7 +50,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: docusaurus-build
-          path: build
+
+      - name: Verify downloaded artifact
+        run: ls -la ./build
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
