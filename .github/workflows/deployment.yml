@@ -52,7 +52,7 @@ jobs:
           name: docusaurus-build
 
       - name: Move build files to correct directory
-        run: mv Docusaurus/Docusaurus/* ./build/
+        run: ls -la
 
       - name: Verify downloaded artifact
         run: ls -la ./build
